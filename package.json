@@ -1,11 +1,12 @@
 {
-  "scripts": {
-    "start": "node server.js"
-  },
   "name": "cms-style-tech-blog",
   "description": "",
   "version": "1.0.0",
   "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node seeds/seed.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JenniferKiesler/cms-style-tech-blog.git"
