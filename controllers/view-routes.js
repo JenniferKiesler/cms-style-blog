@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
             include: User
         })
         blogs = blogs.map(blog => blog.get({plain: true}))
-        console.log(req.originalUrl)
+
         res.render('home', {
             blogs,
             logged_in: req.session.logged_in
@@ -27,8 +27,10 @@ router.get('/', async (req, res) => {
 //         })
 //         blogs = blogs.map(blog => blog.get({plain: true}))
 //         console.log(blogs)
+//         console.log(req.originalUrl)
 //         res.render('dashboard', {
 //             blogs,
+//             url: req.originalUrl,
 //             logged_in: req.session.logged_in
 //         })
 //     } catch(err) {
