@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {User, Blog, Comment} = require('../models')
+const withAuth = require('../utils/auth')
 
 router.get('/', async (req, res) => {
     try {
@@ -16,7 +17,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
     try {
         console.log(req.session.user_id)
         let blogs = await Blog.findAll({
