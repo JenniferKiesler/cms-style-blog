@@ -21,7 +21,6 @@ const handleSubmit = (event) => {
     password: passwordInput.value
   }
 
-  console.log(url, userData)
   fetch(url, {
     method: 'POST',
     headers: {

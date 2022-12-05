@@ -7,7 +7,8 @@ logout.addEventListener('click', (event) => {
     method: 'POST'
   })
   .then(response => {
-    if (response.ok === true) {
+    //response.ok === true?
+    if (response.ok) {
       window.location.href = '/login'
     }
   })
