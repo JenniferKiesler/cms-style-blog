@@ -7,6 +7,7 @@ const editPost = document.getElementById('editPost')
 const fillTitle = document.getElementById('title')
 const fillContent = document.getElementById('content')
 const exitEdit = document.getElementById('exitEdit')
+const editBlog = document.getElementById('editBlog')
 
 newPost.addEventListener('click', (event) => {
   createCard.setAttribute('class', 'card my-3 visible')
@@ -48,14 +49,59 @@ createBlog.addEventListener('submit', (event) => {
 blogPostsContainer.addEventListener('click', (event) => {
   if (event.target.matches('a')) {
     editPost.setAttribute('class', 'card my-3 w-100 position-absolute top-50 start-50 translate-middle visible')
-
     const titleValue = event.target.childNodes[1].innerHTML
     fillTitle.setAttribute('value', titleValue)
     const contentValue = event.target.childNodes[3].innerHTML
     fillContent.textContent = contentValue
+    const idValue = event.target.childNodes[5].innerHTML
+    editBlog.setAttribute('data-blogid', idValue)
   }
 })
 
 exitEdit.addEventListener('click', (event) => {
   editPost.setAttribute('class', 'card my-3 w-100 position-absolute top-50 start-50 translate-middle invisible')
+})
+
+editPost.addEventListener('submit', (event) => {
+  event.preventDefault()
+  const {
+    title: titleInput,
+    content: contentInput
+  } = event.target.elements
+
+  const blogUpdate = {
+    title: titleInput.value,
+    content: contentInput.value
+  }
+
+  const blogid = event.target.dataset.blogid
+
+  if (event.submitter.innerHTML === 'Update Post') {
+    fetch(`/api/blogs/${blogid}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(blogUpdate)
+    })
+    .then(response => {
+      if (response.status === 200) {
+        window.location.href = '/dashboard'
+        editPost.setAttribute('class', 'card my-3 invisible')
+      }
+    })
+    .catch(err => console.log(err))
+  } else if (event.submitter.innerHTML === 'Delete') {
+    console.log('hi')
+    fetch(`/api/blogs/${blogid}`, {
+      method: 'DELETE',
+    })
+    .then(response => {
+      if (response.ok) {
+        window.location.href = '/dashboard'
+        editPost.setAttribute('class', 'card my-3 invisible')
+      }
+    })
+    .catch(err => console.log(err))
+  }
 })
