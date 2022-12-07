@@ -37,7 +37,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     }
 })
 
-router.get('/blog/:id', withAuth, async (req, res) => {
+router.get('/blog/:id', async (req, res) => {
     try {
         let blog = await Blog.findOne({
             where: {
