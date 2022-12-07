@@ -30,7 +30,7 @@ const handleSubmit = (event) => {
   })
   .then(response => {
     if (response.status === 200) {
-      window.location.href = '/'
+      window.location.href = '/dashboard'
     }
   })
   .catch(err => console.log(err))
