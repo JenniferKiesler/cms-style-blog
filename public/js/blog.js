@@ -13,7 +13,7 @@ commentForm.addEventListener('submit', (event) => {
   }
 
   const blogid = event.target.dataset.blogid
-  console.log(blogid)
+  
   fetch('/api/comments', {
     method: 'POST',
     headers: {
