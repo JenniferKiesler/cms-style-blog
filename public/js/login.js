@@ -4,6 +4,7 @@ const loginForm = document.getElementById('login')
 const handleSubmit = (event) => {
   event.preventDefault()
 
+  // gets url for fetch route
   const formId = event.target.id
   if (formId === "signup") {
     url = '/api/users'
@@ -20,7 +21,8 @@ const handleSubmit = (event) => {
     username: usernameInput.value,
     password: passwordInput.value
   }
-
+  
+  // creates a user or signs in user depending on url
   fetch(url, {
     method: 'POST',
     headers: {

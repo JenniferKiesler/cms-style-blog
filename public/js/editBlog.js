@@ -1,5 +1,6 @@
 const editBlog = document.getElementById('editBlog')
 
+// edits blog
 editBlog.addEventListener('submit', (event) => {
   event.preventDefault()
 
@@ -12,10 +13,11 @@ editBlog.addEventListener('submit', (event) => {
     title: titleInput.value,
     content: contentInput.value
   }
-  console.log(updatedBlog)
+ 
   const blogid = event.target.dataset.blogid
 
   if (event.submitter.innerHTML === 'Update Post') {
+    // update blog
     fetch(`/api/blogs/${blogid}`, {
       method: 'PUT',
       headers: {
@@ -26,19 +28,17 @@ editBlog.addEventListener('submit', (event) => {
     .then(response => {
       if (response.status === 200) {
         window.location.href = '/dashboard'
-        editPost.setAttribute('class', 'card my-3 invisible')
       }
     })
     .catch(err => console.log(err))
   } else if (event.submitter.innerHTML === 'Delete') {
-    console.log('hi')
+    // delete blog
     fetch(`/api/blogs/${blogid}`, {
       method: 'DELETE',
     })
     .then(response => {
       if (response.ok) {
         window.location.href = '/dashboard'
-        editPost.setAttribute('class', 'card my-3 invisible')
       }
     })
     .catch(err => console.log(err))

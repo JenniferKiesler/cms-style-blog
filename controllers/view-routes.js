@@ -2,6 +2,7 @@ const router = require('express').Router()
 const {User, Blog, Comment} = require('../models')
 const withAuth = require('../utils/auth')
 
+// homepage view
 router.get('/', async (req, res) => {
     try {
         let blogs = await Blog.findAll({
@@ -17,6 +18,7 @@ router.get('/', async (req, res) => {
     }
 })
 
+// dashboard view
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
         let blogs = await Blog.findAll({
@@ -37,6 +39,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     }
 })
 
+// single blog view with comments
 router.get('/blog/:id', async (req, res) => {
     try {
         let blog = await Blog.findOne({
@@ -65,6 +68,7 @@ router.get('/blog/:id', async (req, res) => {
     }
 })
 
+// create blog form view
 router.get('/createblog', withAuth, async (req, res) => {
     try {
         let user = await User.findOne({
@@ -81,9 +85,10 @@ router.get('/createblog', withAuth, async (req, res) => {
     } catch(err) {
         res.status(500).json(err)
     }
-  })
+})
 
-  router.get('/editblog/:id', withAuth, async (req, res) => {
+// edit blog form view
+router.get('/editblog/:id', withAuth, async (req, res) => {
     try {
         let blog = await Blog.findOne({
             where: {
@@ -101,10 +106,11 @@ router.get('/createblog', withAuth, async (req, res) => {
     } catch(err) {
         res.status(500).json(err)
     }
-  })
+})
 
+// log in/sign up view
 router.get('/login', (req, res) => {
     res.render('login')
-  })
+})
 
 module.exports = router

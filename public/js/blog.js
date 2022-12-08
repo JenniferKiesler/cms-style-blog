@@ -1,5 +1,6 @@
 const commentForm = document.getElementById('comment')
 
+// posts comments
 commentForm.addEventListener('submit', (event) => {
   event.preventDefault()
 

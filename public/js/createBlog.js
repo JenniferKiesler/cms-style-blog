@@ -1,7 +1,9 @@
 const createBlog = document.getElementById('createBlog')
 
+// creates new blog
 createBlog.addEventListener('submit', (event) => {
   event.preventDefault()
+  
   const {
     title: titleInput,
     content: contentInput
@@ -11,7 +13,7 @@ createBlog.addEventListener('submit', (event) => {
     title: titleInput.value,
     content: contentInput.value
   }
-  console.log(blogData)
+  
   fetch('/api/blogs', {
     method: 'POST',
     headers: {
