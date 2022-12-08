@@ -35,7 +35,7 @@ This application uses [express-handlebars](https://www.npmjs.com/package/express
 
 ## Deployed Link
 
-
+https://jk-cms-style-tech-blog.herokuapp.com/
 
 ## Questions
 
