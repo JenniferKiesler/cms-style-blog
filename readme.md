@@ -26,7 +26,12 @@ This application uses [express-handlebars](https://www.npmjs.com/package/express
 
 ## Visuals
 
-
+![home-view](/assets/images/home-view.png)
+![login-view](/assets/images/login-view.png)
+![dashboard-view](/assets/images/dashboard-view.png)
+![single-blog-view](/assets/images/single-blog-view.png)
+![create-blog](/assets/images/create-blog.png)
+![edit-blog](/assets/images/edit-blog.png)
 
 ## Deployed Link
 
